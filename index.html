@@ -62,6 +62,7 @@
   .card:nth-child(5) { --accent: #f07070; }
   .card:nth-child(6) { --accent: #50c0c0; }
   .card:nth-child(7) { --accent: #f0c040; }
+  .card:nth-child(8) { --accent: #c46db0; }
 
   .card {
     background: #fff;
@@ -842,6 +843,25 @@
     letter-spacing: 1px;
   }
 
+  /* Section 7 explain cards */
+  .q-explain-card {
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    margin-top: 4px;
+  }
+  .q-explain-correct {
+    background: #edfaf3;
+    border-left: 4px solid #22a065;
+    color: #1a5a38;
+  }
+  .q-explain-wrong {
+    background: #fff8f0;
+    border-left: 4px solid #e09020;
+    color: #6a3800;
+  }
+
   .q-prompt {
     font-size: 0.82rem;
     color: #999;
@@ -1364,6 +1384,30 @@
         <div class="card-text">
           <h3>Suspicions</h3>
           <div class="card-badge">✓ Available</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="showExplanation(7)">
+      <div class="card-accent"></div>
+      <div class="card-inner">
+        <div class="card-num">7</div>
+        <div class="card-text">
+          <h3>No Punctuation</h3>
+          <div class="card-badge">✓ Available</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="startMixedReview()">
+      <div class="card-accent"></div>
+      <div class="card-inner">
+        <div class="card-num">8</div>
+        <div class="card-text">
+          <h3>Test Review</h3>
+          <div class="card-badge" style="background:#fff8e0;color:#8a6000;">★ All Rules</div>
         </div>
         <div class="card-arrow">›</div>
       </div>
@@ -2013,6 +2057,87 @@
 
   </div>
 
+  <!-- Rule 7: No Punctuation -->
+  <div id="exp-7" class="exp-body" style="display:none;">
+
+    <div class="exp-title">
+      <div class="rule-num">Rule 7</div>
+      <h2>No Punctuation</h2>
+    </div>
+
+    <div class="step-card" style="background:#fff8f0; border:1.5px solid #f0c888;">
+      <h3 style="color:#a05010;">What is this rule?</h3>
+      <p style="font-size:0.9rem; color:#555; line-height:1.6; margin-top:6px;">Sometimes all four answer choices contain the <strong>exact same word</strong> — and the only thing that differs is the punctuation after it (or the absence of it). When you spot this pattern, you have a shortcut. Check for the no-punctuation option first — it's correct about <strong>50% of the time</strong>.</p>
+    </div>
+
+    <div class="flow2-wrap">
+
+      <!-- Step 1 -->
+      <div class="flow2-step">
+        <div class="flow2-badge" style="background:#eef2ff; color:#5b8cf7;">1</div>
+        <div class="flow2-content">
+          <div class="flow2-label" style="color:#5b8cf7;">Spot It</div>
+          <div class="flow2-title">All four choices = same word, different punctuation</div>
+          <div class="flow2-desc">Before reading the passage, glance at the choices. If every option is the same word with only the punctuation changing, you're looking at a No-Punctuation question.</div>
+          <div class="flow2-examples">
+            <div class="flow2-ex bad">A. &nbsp;artist—</div>
+            <div class="flow2-ex bad">B. &nbsp;artist,</div>
+            <div class="flow2-ex bad">C. &nbsp;artist:</div>
+            <div class="flow2-ex good">D. &nbsp;artist &nbsp;<em style="color:#3a7a5a; font-size:0.82rem;">(no punctuation)</em></div>
+          </div>
+          <div class="flow2-note">
+            <strong>Quick check:</strong> Every choice the same word? Only punctuation changes? You've found it.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow2-arrow-wrap">
+        <div class="flow2-arrow-line"></div>
+        <div class="flow2-arrow-head"></div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flow2-step">
+        <div class="flow2-badge" style="background:#edfaf3; color:#3a9a6a;">2</div>
+        <div class="flow2-content">
+          <div class="flow2-label" style="color:#3a9a6a;">The Logic</div>
+          <div class="flow2-title">Every punctuation mark creates a pause. No pause needed? No punctuation.</div>
+          <div class="flow2-desc">A comma, dash, colon, and semicolon all do the same basic thing — they create a break in the sentence. The SAT includes them to see if you feel tempted to add a pause where none is needed. If the word flows naturally into what follows, none of the marks belong there.</div>
+          <div class="flow2-examples">
+            <div class="flow2-ex bad">C. &nbsp;...French portrait artist: Marie-Denise Villers... &nbsp;<em style="font-size:0.8rem;">(colon = introduces a list — but no list follows)</em></div>
+            <div class="flow2-ex good">D. &nbsp;...French portrait artist Marie-Denise Villers... &nbsp;<em style="font-size:0.8rem; color:#3a7a5a;">(flows naturally ✓)</em></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow2-arrow-wrap">
+        <div class="flow2-arrow-line"></div>
+        <div class="flow2-arrow-head"></div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flow2-step">
+        <div class="flow2-badge" style="background:#fff5e8; color:#e08030;">3</div>
+        <div class="flow2-content">
+          <div class="flow2-label" style="color:#e08030;">The Exception (~50%)</div>
+          <div class="flow2-title">Sometimes punctuation IS needed — always confirm by reading</div>
+          <div class="flow2-desc">This is a hint, not a guarantee. About half the time, no punctuation is correct. But the other half, a punctuation mark — most often a colon — is required. Always read the sentence once to confirm before choosing.</div>
+          <div class="flow2-examples">
+            <div class="flow2-ex bad">C. &nbsp;...goals were threefold to ensure... &nbsp;<em style="font-size:0.8rem;">(no punctuation — but a colon is needed here)</em></div>
+            <div class="flow2-ex good">A. &nbsp;...goals were threefold: to ensure... &nbsp;<em style="font-size:0.8rem; color:#3a7a5a;">(colon introduces the list of three goals ✓)</em></div>
+          </div>
+          <div class="flow2-note" style="background:#fff0f0; border-left:3px solid #e05555; color:#7a1a1a;">
+            <strong>Remember:</strong> Check no-punctuation first. If reading the sentence feels natural without any break, go with it. If a list follows or a pause is clearly needed, look for the punctuation mark that fits.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end flow2-wrap -->
+
+    <button class="next-btn" onclick="startQuestions(7)">Practice Questions →</button>
+
+  </div>
+
 </div>
 
 
@@ -2083,7 +2208,9 @@
     3: 'SuperCommas',
     4: 'Wrong Answers',
     5: 'Dangling Participles',
-    6: 'Suspicions'
+    6: 'Suspicions',
+    7: 'No Punctuation',
+    8: 'Test Review'
   };
 
   function showScreen(id) {
@@ -2098,7 +2225,7 @@
   function showExplanation(num) {
     showScreen('explanation');
     document.getElementById('exp-section-title').textContent = sectionTitles[num];
-    for (let i = 1; i <= 6; i++)
+    for (let i = 1; i <= 7; i++)
       document.getElementById('exp-' + i).style.display = i === num ? 'flex' : 'none';
   }
 
@@ -2561,6 +2688,509 @@
     },
   ];
 
+  // ─── SECTION 7: NO PUNCTUATION ──────────────────────────
+  questionSets[7] = [
+    {
+      passage: 'A harpsichord may look just like a piano, but the difference between the two instruments is easy to hear. When a harpsichord\'s keys are pressed, the strings inside the <span class="q-blank">______</span> are plucked, not struck.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['instrument:', 'instrument', 'instrument—', 'instrument,'],
+      correct: 1,
+      explanation: '"Instrument" flows directly into "are plucked" — no pause, no list, no interruption. All four choices are the same word with different punctuation. When you see this pattern, the answer with <strong>no punctuation</strong> is correct. The colon (A) would introduce a list that doesn\'t follow. The dash (C) would signal a dramatic interruption that doesn\'t exist. The comma (D) creates an unnecessary pause.'
+    },
+    {
+      passage: 'In crafting her fantasy fiction, Nigerian-born British author Helen Oyeyemi has drawn inspiration from the classic nineteenth-century fairy tales of the Brothers Grimm. Her 2014 novel <em>Boy, Snow, Bird</em>, for instance, is a complex retelling of the story of Snow White, while her 2019 novel <span class="q-blank">______</span> offers a delicious twist on the classic tale of Hansel and Gretel.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['Gingerbread—', 'Gingerbread,', 'Gingerbread', 'Gingerbread:'],
+      correct: 2,
+      explanation: '"Gingerbread" is the title of the novel, flowing directly into "offers a delicious twist" — no pause between the title and the verb. All four choices are the same word with different punctuation. The answer with <strong>no punctuation</strong> is correct. The dash (A) would signal an interruption. The comma (B) adds an unnecessary pause. The colon (D) would introduce a list that doesn\'t follow.'
+    },
+    {
+      passage: 'Long attributed to Jacques-Louis David, the preeminent Neoclassical painter of his day, the 1801 painting <em>Marie Joséphine Charlotte du Val d\'Ognes</em> gained fresh attention in the 1990s when art historians discovered that the painting — which depicts a solitary young woman sketching — was actually the work of little-known French portrait <span class="q-blank">______</span> Marie-Denise Villers (1774–1821).',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['artist—', 'artist', 'artist:', 'artist,'],
+      correct: 1,
+      explanation: '"Artist" flows directly into "Marie-Denise Villers (1774–1821)" — the name simply identifies which artist, requiring no pause. All four choices are the same word with different punctuation. The answer with <strong>no punctuation</strong> is correct. The dash (A) would signal a dramatic interruption. The colon (C) would introduce a list. The comma (D) adds an unnecessary pause between "artist" and the name that identifies her.'
+    },
+    {
+      passage: 'In February 1919, following the end of the First World War, women from ten countries around the world convened the Inter-Allied Women\'s Conference in Paris. The conference\'s goals were <span class="q-blank">______</span> ensure women\'s participation in the proceedings of the Paris Peace Conference, to secure the right of women to serve in the League of Nations, and to advocate for human rights.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['threefold: to', 'threefold. To', 'threefold to', 'threefold; to'],
+      correct: 0,
+      explanation: 'Here the same-word pattern appears — but <strong>no punctuation is wrong</strong>. "Threefold" describes the goals, and a colon is needed to introduce the list that follows ("to ensure… to secure… and to advocate…"). When a word introduces a list, a colon is required. This is exactly why you must always read the sentence to confirm: the no-punctuation answer only works when the sentence flows without any break at all.'
+    },
+  ];
+
+  // ─── SECTION 8: TEST REVIEW — MIXED QUESTIONS ──────────
+  // 25 questions covering all 6 rules, shuffled on each start.
+  // Rule is revealed ONLY after a correct answer.
+  // boldSubject: string to bold in correct answer for DP questions.
+  const mixedReviewBase = [
+
+    // ── IT/THEY: CAN USE (1) ──
+    { ruleType:'it',
+      passage: 'The collection of bronze artifacts unearthed during the city\'s excavation project <span class="q-blank">______</span> to a climate-controlled storage facility for long-term preservation.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['were transferred','was transferred','are transferred','have been transferred'],
+      correct: 1,
+      explanation: 'The subject is <strong>collection</strong> (singular) — not "artifacts." Strip away the long phrase and you get: "The collection was transferred." This was an <strong>It/They Rule</strong> question. None of the choices had a standalone <em>-ed</em>, <em>-ing</em>, <em>will</em>, or <em>to</em>, so you could use the rule — plug in <em>it</em>: "It was transferred" ✓' },
+
+    // ── SUSPICIONS (1) ──
+    { ruleType:'su',
+      passage: 'The city had not updated its transportation infrastructure in over thirty years <span class="q-blank">______</span> made rebuilding roads and bridges her top priority.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', the new mayor', '; the new mayor', 'but the new mayor', ', although the new mayor'],
+      correct: 1,
+      explanation: '<strong>Suspicions Rule:</strong> The lone semicolon in B was your suspect — one semicolon by itself is almost always correct. Read it through: "The city had not updated its infrastructure; the new mayor made rebuilding her priority." ✓ A is a comma splice. C uses "but" (contrast) — this is a consequence, not a contrast. D uses "although," which also implies contrast.' },
+
+    // ── WRONG ANSWERS (1) ──
+    { ruleType:'wa',
+      passage: 'The surgeon completed the six-hour procedure on schedule <span class="q-blank">______</span> remained in the hospital overnight to monitor the patient\'s recovery.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['but she','but, she',', but she','; but she'],
+      correct: 2,
+      explanation: '<strong>Wrong Answers Rule:</strong> You always need a comma before <em>and</em>, <em>or</em>, and <em>but</em> when connecting two independent clauses. A was automatically wrong — no comma before "but." D was automatically wrong — never use a semicolon immediately before "but." B adds a comma after "but," which is wrong punctuation.' },
+
+    // ── DANGLING PARTICIPLES (1) ──
+    { ruleType:'dp',
+      passage: 'Running late for his first day on the job, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['his tie was knotted hurriedly on the subway.','the office elevator seemed to move impossibly slowly.','Marcus arrived flustered and out of breath.','a forgotten badge added to the chaos.'],
+      correct: 2, boldSubject: 'Marcus',
+      explanation: '<strong>Dangling Participle Rule:</strong> "Running late" must be immediately followed by <em>who</em> was running late. Only C — <strong>Marcus</strong> — is the one who can run late. "His tie," "the elevator," and "a forgotten badge" cannot run late. After the opening comma + -ing phrase, the very next noun must be the one doing the action.' },
+
+    // ── TRANSITIONS (1) ──
+    { ruleType:'tr',
+      passage: 'Scientists have long believed that a high-protein diet is essential for building muscle. Recent studies have challenged that assumption <span class="q-blank">______</span> plant-based proteins appear to be equally effective when consumed in sufficient quantities.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', however;', ', however,', '; however,', ', however'],
+      correct: 0,
+      explanation: '<strong>Transitions &amp; Semicolons (ITE) Rule:</strong> Three sentences: [Info] Scientists believed high-protein is essential. [Transition] Recent studies challenged that assumption<strong>, however;</strong> [Explanation] plant-based proteins are equally effective. The transition "however" must be <em>hugged</em> by punctuation — comma before it, semicolon after. B has a comma after instead of a semicolon. C puts the semicolon before "however" (wrong side). D has no punctuation after the transition at all.' },
+
+    // ── IT/THEY: CAN USE (2) ──
+    { ruleType:'it',
+      passage: 'A team of researchers from four different universities <span class="q-blank">______</span> a more cost-effective method for capturing carbon directly from the atmosphere.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['are developing','is developing','were developing','have developed'],
+      correct: 1,
+      explanation: 'The subject is <strong>team</strong> (singular collective noun). Strip away "of researchers from four different universities" and you get: "A team is developing." This was an <strong>It/They Rule</strong> question — no standalone tense markers confirm it\'s subject-verb agreement. Plug in <em>it</em>: "It is developing" ✓' },
+
+    // ── SUPERCOMMAS (1) ──
+    { ruleType:'sc',
+      passage: 'The expedition documented three ecosystems: tropical <span class="q-blank">______</span> temperate forests, home to black bears and elk; and arctic tundra, where permafrost limits plant growth.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['rainforests, rich in biodiversity,','rainforests, rich in biodiversity;','rainforests rich in biodiversity;','rainforests, rich in biodiversity.'],
+      correct: 1,
+      sc_reveal: 'The expedition documented three ecosystems: <span class="ite-i">tropical rainforests, rich in biodiversity</span>; <span class="ite-t">temperate forests, home to black bears and elk</span>; and <span class="ite-e">arctic tundra, where permafrost limits plant growth</span>.',
+      explanation: '<strong>SuperCommas (;and) Rule:</strong> Each ecosystem\'s description contains internal commas, so semicolons must separate the three items. B correctly ends item 1 with a semicolon — look for the <strong>;and</strong> already visible in the passage: that\'s your signal. A ends with a comma (ambiguous with the internal commas). C is missing the comma inside item 1. D ends with a period, creating a fragment.' },
+
+    // ── SUSPICIONS (2) ──
+    { ruleType:'su',
+      passage: 'The photographer spent twelve hours editing the portfolio <span class="q-blank">______</span> exceeded even his own expectations.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', the final collection', 'but the final collection', '; the final collection', ', although the final collection'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone semicolon in C is your suspect. Read it through: "The photographer spent twelve hours editing; the final collection exceeded his expectations." ✓ A is a comma splice. B uses "but" — exceeding expectations after hard work is not a contrast. D uses "although" — same problem.' },
+
+    // ── WRONG ANSWERS (2) ──
+    { ruleType:'wa',
+      passage: 'The keynote speaker _______ opened the conference with remarks on the future of artificial intelligence.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', Professor James Okafor,','Professor, James Okafor,','Professor James Okafor',', Professor James Okafor'],
+      correct: 2,
+      explanation: '<strong>Wrong Answers — Identity Rule:</strong> A full name identifies who someone is — it should never be set off by commas, split with a comma, or preceded by a lone comma. "Professor James Okafor" IS the identifier. A wraps the name in commas as though it\'s extra information (wrong). B splits the name mid-way (wrong). D adds a comma before the name with no closing comma (wrong).' },
+
+    // ── IT/THEY: CAN USE (3) ──
+    { ruleType:'it',
+      passage: 'The list of qualified applicants submitted by the hiring committee <span class="q-blank">______</span> five candidates with more than a decade of relevant experience.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['include','includes','are including','have included'],
+      correct: 1,
+      explanation: 'The subject is <strong>list</strong> (singular). Strip away the long phrase and you get: "The list includes five candidates." This was an <strong>It/They Rule</strong> question — no standalone tense markers. Plug in <em>it</em>: "It includes" ✓' },
+
+    // ── DANGLING PARTICIPLES (2) ──
+    { ruleType:'dp',
+      passage: 'Designed to withstand temperatures below −40°C, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['engineers tested the material at Arctic research stations.','the material\'s durability has been widely praised.','the new insulation material has proven ideal for Arctic research stations.','testing was conducted across multiple climate zones.'],
+      correct: 2, boldSubject: 'new insulation material',
+      explanation: '<strong>Dangling Participle Rule:</strong> "Designed to withstand" must be immediately followed by the thing that was designed. Only C — the <strong>new insulation material</strong> — was designed to withstand cold temperatures. Engineers, the material\'s durability, and testing were not designed to withstand anything.' },
+
+    // ── TRANSITIONS (2) ──
+    { ruleType:'tr',
+      passage: 'The company had been profitable for fifteen straight years. Its most recent quarterly report told a different story <span class="q-blank">______</span> operating costs had surged while consumer demand fell sharply.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['; however,', ', however,', ', however;', ', however'],
+      correct: 2,
+      explanation: '<strong>Transitions &amp; Semicolons (ITE) Rule:</strong> Three sentences: [Info] The company had been profitable for 15 years. [Transition] Its most recent report told a different story<strong>, however;</strong> [Explanation] costs surged while demand fell. The transition "however" must be <em>hugged</em> — comma before, semicolon after. A puts the semicolon before "however" (wrong side). B has a comma after instead of a semicolon. D has no punctuation after the transition.' },
+
+    // ── SUSPICIONS (3) ──
+    { ruleType:'su',
+      passage: 'The museum\'s collection had been housed in a century-old building <span class="q-blank">______</span> approved a $50 million expansion to create modern gallery space.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', the board of directors', 'but the board of directors', '. The board of directors', ', however the board of directors'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone period in C is your suspect. Read it through: "The collection had been housed in a century-old building. The board approved a $50 million expansion." ✓ A is a comma splice. B uses "but" — approving an expansion is a response, not a contrast to an old building. D uses "however" without a semicolon before it, which is always wrong.' },
+
+    // ── IT/THEY: CANNOT USE (1) ──
+    { ruleType:'it',
+      passage: 'By the time the clients arrived for the presentation, the architect <span class="q-blank">______</span> the revised blueprints and printed three full-size copies.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['sketches','had sketched','will sketch','sketching'],
+      correct: 1,
+      explanation: 'This was a <strong>verb tense</strong> question — you <em>cannot</em> use the It/They Rule. "Will sketch" (will) and "sketching" (standalone -ing with no helper) are tense markers in the choices. You had to read the sentence. "By the time the clients arrived" signals that the sketching was completed <em>before</em> their arrival — past perfect tense: <strong>had sketched</strong>.' },
+
+    // ── DANGLING PARTICIPLES (5) ──
+    { ruleType:'dp',
+      passage: 'Praised by critics as a groundbreaking work of contemporary fiction, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [
+        'the novel\'s themes of identity were explored across three generations.',
+        'it was widely studied in universities across the country.',
+        'readers found the novel both challenging and deeply rewarding.',
+        'the novel earned its author the Pulitzer Prize for Fiction.'
+      ],
+      correct: 3, boldSubject: 'novel',
+      explanation: '<strong>Dangling Participle Rule:</strong> "Praised by critics as a groundbreaking work" must be immediately followed by the thing that was praised — the <strong>novel</strong> itself. A says "the novel\'s themes" were the groundbreaking work (wrong — the themes weren\'t praised as a work). B uses vague "it." C says "readers" were praised (wrong). Only D places the novel right after the comma.' },
+
+    // ── SUPERCOMMAS (2) ──
+    { ruleType:'sc',
+      passage: 'The renovation included updates to three areas: the lobby, featuring new marble flooring <span class="q-blank">______</span> the conference rooms, each equipped with modern A/V technology; and the rooftop terrace, now accessible to all employees.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['and custom lighting,','and custom lighting;','and custom lighting:','and custom lighting'],
+      correct: 1,
+      sc_reveal: 'The renovation included updates to three areas: <span class="ite-i">the lobby, featuring new marble flooring and custom lighting</span>; <span class="ite-t">the conference rooms, each equipped with modern A/V technology</span>; and <span class="ite-e">the rooftop terrace, now accessible to all employees</span>.',
+      explanation: '<strong>SuperCommas (;and) Rule:</strong> Each area\'s description contains internal commas, so semicolons must separate the three items. Spot the <strong>;and</strong> already in the passage — that\'s your signal. B correctly ends item 1 with a semicolon before the next item. A ends with a comma (the items have their own internal commas, creating ambiguity). C ends with a colon (wrong). D has no closing punctuation at all.' },
+
+    // ── DANGLING PARTICIPLES (3) ──
+    { ruleType:'dp',
+      passage: 'Having studied abroad in three different countries, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['her language skills were considered exceptional.','it gave her a distinct advantage during negotiations.','the young diplomat impressed the committee with her fluency in four languages.','a broad cultural perspective was developed over her career.'],
+      correct: 2, boldSubject: 'young diplomat',
+      explanation: '<strong>Dangling Participle Rule:</strong> "Having studied abroad" must be immediately followed by the person who studied. Only C — the <strong>young diplomat</strong> — did the studying. "Her language skills," "it," and "a broad cultural perspective" cannot study abroad.' },
+
+    // ── IT/THEY: CANNOT USE (2) ──
+    { ruleType:'it',
+      passage: 'The documentary filmmaker <span class="q-blank">______</span> three years of footage before condensing her work into a ninety-minute film that premiered at a major international festival.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['collects','collected','will collect','collecting'],
+      correct: 1,
+      explanation: 'This was a <strong>verb tense</strong> question — you <em>cannot</em> use the It/They Rule. "Collected" (standalone -ed), "will collect" (will), and "collecting" (standalone -ing with no helper) are all tense markers in the choices. You had to read the sentence. The filming happened before the premiere — past tense: <strong>collected</strong>.' },
+
+    // ── SUSPICIONS (4) ──
+    { ruleType:'su',
+      passage: 'The inspector identified three critical safety violations <span class="q-blank">______</span> a corroded water main, and an unsecured gas line near the furnace.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', although exposed wiring,', ': exposed wiring,', 'but exposed wiring,', ', and exposed wiring,'],
+      correct: 1,
+      explanation: '<strong>Suspicions Rule:</strong> The lone colon in B is your suspect — a colon introduces a list or explanation. "Three critical safety violations: exposed wiring, a corroded water main, and an unsecured gas line." ✓ The word "three" before "violations" sets up a list — the colon is the perfect connector. A and C use contrast conjunctions that make no sense. D uses "and" which doesn\'t introduce a defined list.' },
+
+    // ── TRANSITIONS (3) ──
+    { ruleType:'tr',
+      passage: 'The ancient ruins had survived centuries of harsh weather. Modern pollution posed an unexpected threat <span class="q-blank">______</span> acid rain had begun to erode the stonework at a rate that alarmed preservationists.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', though,', '. Though,', '; though,', ', though;'],
+      correct: 3,
+      explanation: '<strong>Transitions &amp; Semicolons (ITE) Rule:</strong> Three sentences: [Info] The ruins survived centuries of harsh weather. [Transition] Modern pollution posed an unexpected threat<strong>, though;</strong> [Explanation] acid rain had begun to erode the stonework. The transition "though" must be <em>hugged</em> — comma before, semicolon after. A has a comma after instead of a semicolon. B uses a period (separate sentences). C puts the semicolon before "though" (wrong side).' },
+
+    // ── WRONG ANSWERS (4) ──
+    { ruleType:'wa',
+      passage: 'The Mars rover transmitted thousands of images back to Earth <span class="q-blank">______</span> analyzed each one for signs of ancient water activity.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['. Scientists', '; scientists', ', scientists', ', and scientists'],
+      correct: 3,
+      explanation: '<strong>Wrong Answers — Period + Semicolon Rule:</strong> When a period (A) and a semicolon (B) appear in the choices for the same blank, <em>both are automatically eliminated</em> — they\'re interchangeable and cancel each other out. That leaves C (comma splice, wrong) and D (comma + "and," correct). This is one of the most powerful wrong-answer shortcuts: if you see both, cross out both.' },
+
+    // ── SUSPICIONS (5) ──
+    { ruleType:'su',
+      autoWrong: 1,
+      passage: 'The architect submitted three revised designs <span class="q-blank">______</span> reflected a different interpretation of the client\'s original vision.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', each one', 'and each one', '; each one', 'but each one'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone semicolon in C is your suspect. Read it through: "The architect submitted three designs; each one reflected a different interpretation." ✓ A is a comma splice. B was automatically wrong — you always need a comma before "and" when it connects two independent clauses. D uses "but" (contrast) — offering multiple interpretations is not a contrast.' },
+
+    // ── DANGLING PARTICIPLES (4) ──
+    { ruleType:'dp',
+      passage: 'Exhausted from the overnight transatlantic flight, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['the baggage carousel seemed to move unbearably slowly.','the wait for luggage felt endless in the terminal.','the passengers found that the baggage carousel took nearly an hour.','a series of long delays tested everyone\'s patience.'],
+      correct: 2, boldSubject: 'passengers',
+      explanation: '<strong>Dangling Participle Rule:</strong> "Exhausted from the overnight flight" must immediately be followed by whoever was exhausted. Only C — the <strong>passengers</strong> — experienced the exhaustion. "The baggage carousel," "the wait," and "a series of delays" cannot be exhausted.' },
+
+    // ── WRONG ANSWERS (5) ──
+    { ruleType:'wa',
+      passage: 'The foundation provides scholarships to first-generation college students <span class="q-blank">______</span> offers mentorship programs and career workshops throughout the academic year.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['and it',', and it','; and it','. And it'],
+      correct: 1,
+      explanation: '<strong>Wrong Answers Rule:</strong> You always need a comma before <em>and</em> (and <em>but</em> and <em>or</em>) when connecting two independent clauses. A was automatically wrong — no comma before "and." C was automatically wrong — never use a semicolon immediately before "and." D creates a sentence fragment.' },
+
+    // ── SUSPICIONS (6) ──
+    { ruleType:'su',
+      passage: 'The company\'s revenue has grown steadily for the past decade <span class="q-blank">______</span> project continued expansion into new international markets over the next five years.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', economists', ', however economists', '; economists', 'but economists'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone semicolon in C is your suspect. Read it through: "Revenue has grown for a decade; economists project continued expansion." ✓ A is a comma splice. B was automatically wrong — "however" requires a <em>semicolon before it</em>, not just a comma. D uses "but" (contrast) — projecting growth after growth is not a contrast.' },
+
+    // ══ SECOND SET OF 25 (doubles the pool) ══════════════════
+
+    // ── IT/THEY: CAN USE (4) ──
+    { ruleType:'it',
+      passage: 'The presence of heavy metals in the soil samples collected near the old factory <span class="q-blank">______</span> that industrial contamination has been occurring for several decades.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['suggest','suggests','are suggesting','have suggested'],
+      correct: 1,
+      explanation: 'The subject is <strong>presence</strong> (singular). Strip away "of heavy metals in the soil samples collected near the old factory" and you get: "The presence suggests." This was an <strong>It/They Rule</strong> question — no standalone tense markers. Plug in <em>it</em>: "It suggests" ✓' },
+
+    // ── IT/THEY: CAN USE (5) ──
+    { ruleType:'it',
+      passage: 'A panel of international scientists <span class="q-blank">______</span> annually to evaluate new evidence on the long-term effects of microplastic pollution on marine ecosystems.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['meet','meets','are meeting','have met'],
+      correct: 1,
+      explanation: 'The subject is <strong>panel</strong> (singular collective noun). Strip away "of international scientists" and you get: "A panel meets annually." This was an <strong>It/They Rule</strong> question — no standalone tense markers. Plug in <em>it</em>: "It meets" ✓' },
+
+    // ── IT/THEY: CAN USE (6) ──
+    { ruleType:'it',
+      passage: 'The series of lectures delivered by the visiting professor <span class="q-blank">______</span> the relationship between urban design and public mental health.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['explore','explores','are exploring','have explored'],
+      correct: 1,
+      explanation: 'The subject is <strong>series</strong> (singular). Strip away "of lectures delivered by the visiting professor" and you get: "The series explores." This was an <strong>It/They Rule</strong> question — no standalone tense markers. Plug in <em>it</em>: "It explores" ✓' },
+
+    // ── IT/THEY: CANNOT USE (3) ──
+    { ruleType:'it',
+      passage: 'After the earthquake struck, engineers <span class="q-blank">______</span> the structural integrity of over three hundred bridges across the region.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['assess','assessed','will assess','assessing'],
+      correct: 1,
+      explanation: 'This was a <strong>verb tense</strong> question — you <em>cannot</em> use the It/They Rule. "Assessed" (standalone -ed), "will assess" (will), and "assessing" (standalone -ing) are all tense markers. You had to read the sentence. "After the earthquake struck" signals past tense → <strong>assessed</strong>.' },
+
+    // ── IT/THEY: CANNOT USE (4) ──
+    { ruleType:'it',
+      passage: 'By the time the ceremony begins, the venue staff <span class="q-blank">______</span> the chairs and prepared all the decorations for the evening.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['arrange','arranged','will have arranged','arranging'],
+      correct: 2,
+      explanation: 'This was a <strong>verb tense</strong> question — you <em>cannot</em> use the It/They Rule. "Arranged" (standalone -ed), "will have arranged" (will), and "arranging" (standalone -ing) are all tense markers. "By the time the ceremony begins" signals future perfect tense → <strong>will have arranged</strong>.' },
+
+    // ── TRANSITIONS (4 — however) ──
+    { ruleType:'tr',
+      passage: 'The pharmaceutical company\'s early clinical trials showed strong efficacy against the virus. Independent reviewers reached a very different conclusion <span class="q-blank">______</span> several methodological flaws rendered the original data unreliable.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', however;', ', however,', '; however,', ', however'],
+      correct: 0,
+      explanation: '<strong>Transitions &amp; Semicolons (ITE) Rule:</strong> [Info] Early trials showed strong efficacy. [Transition] Independent reviewers reached a different conclusion<strong>, however;</strong> [Explanation] methodological flaws rendered the data unreliable. Comma before "however," semicolon after. B has a comma after instead of semicolon. C puts the semicolon on the wrong side. D has no punctuation after.' },
+
+    // ── TRANSITIONS (5 — though) ──
+    { ruleType:'tr',
+      passage: 'The architect\'s original blueprints called for a building of modest height. The final structure rose nearly twice as tall <span class="q-blank">______</span> the city council had approved the additional stories only after extensive public debate.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', though,', '. Though,', ', though;', '; though,'],
+      correct: 2,
+      explanation: '<strong>Transitions &amp; Semicolons (ITE) Rule:</strong> [Info] Blueprints called for modest height. [Transition] The final structure rose nearly twice as tall<strong>, though;</strong> [Explanation] the council approved additional stories after public debate. Comma before "though," semicolon after. A has a comma after. B uses a period. D puts semicolon on the wrong side.' },
+
+    // ── TRANSITIONS (6 — however) ──
+    { ruleType:'tr',
+      passage: 'Most historians credit Gutenberg with inventing the printing press in the fifteenth century. Scholars of East Asian history tell a more complicated story <span class="q-blank">______</span> movable type had been in use in China and Korea for centuries before Gutenberg\'s invention.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['; however,', ', however,', ', however;', ', however'],
+      correct: 2,
+      explanation: '<strong>Transitions &amp; Semicolons (ITE) Rule:</strong> [Info] Gutenberg credited with inventing the press. [Transition] Scholars of East Asian history tell a more complicated story<strong>, however;</strong> [Explanation] movable type had been used in Asia for centuries before Gutenberg. Comma before "however," semicolon after. A puts semicolon before "however" (wrong side). B has comma after. D has no punctuation after.' },
+
+    // ── SUPERCOMMAS (3) ──
+    { ruleType:'sc',
+      passage: 'The chef prepared three signature dishes: a slow-braised short rib, served with truffle mashed potatoes <span class="q-blank">______</span> seared sea scallops, plated on saffron risotto; and pan-roasted duck breast, accompanied by a cherry reduction.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['and herbed butter,','and herbed butter;','and herbed butter:','and herbed butter'],
+      correct: 1,
+      sc_reveal: 'The chef prepared three signature dishes: <span class="ite-i">a slow-braised short rib, served with truffle mashed potatoes and herbed butter</span>; <span class="ite-t">seared sea scallops, plated on saffron risotto</span>; and <span class="ite-e">pan-roasted duck breast, accompanied by a cherry reduction</span>.',
+      explanation: '<strong>SuperCommas (;and) Rule:</strong> Each dish\'s description contains internal commas, so semicolons separate the three items. Spot the <strong>;and</strong> already in the passage. B correctly ends item 1 with a semicolon. A ends with a comma (ambiguous with internal commas). C ends with a colon (wrong). D has no closing punctuation.' },
+
+    // ── SUPERCOMMAS (4) ──
+    { ruleType:'sc',
+      passage: 'The documentary profiled three overlooked pioneers of early computing: Ada Lovelace, who wrote the first algorithm intended for a machine <span class="q-blank">______</span> Grace Hopper, who developed one of the first compiler tools; and Katherine Johnson, whose orbital calculations were critical to early NASA missions.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['in the 1840s,','in the 1840s;','in the 1840s:','in the 1840s.'],
+      correct: 1,
+      sc_reveal: 'The documentary profiled three overlooked pioneers of early computing: <span class="ite-i">Ada Lovelace, who wrote the first algorithm intended for a machine in the 1840s</span>; <span class="ite-t">Grace Hopper, who developed one of the first compiler tools</span>; and <span class="ite-e">Katherine Johnson, whose orbital calculations were critical to early NASA missions</span>.',
+      explanation: '<strong>SuperCommas (;and) Rule:</strong> Each pioneer\'s entry contains internal commas (relative clauses), so semicolons separate the three items. Spot the <strong>;and</strong> already visible in the passage. B correctly ends item 1 with a semicolon. A ends with a comma (ambiguous). C ends with a colon (wrong). D ends with a period, creating a fragment.' },
+
+    // ── WRONG ANSWERS (6 — comma before but) ──
+    { ruleType:'wa',
+      passage: 'The initial funding proposal was rejected by the board <span class="q-blank">______</span> a revised version with a reduced budget was approved three months later.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['but a',', but a','; but a','. But a'],
+      correct: 1,
+      explanation: '<strong>Wrong Answers Rule:</strong> You always need a comma before <em>but</em> when connecting two independent clauses. A was automatically wrong — no comma before "but." C was automatically wrong — never use a semicolon immediately before "but." D creates a sentence fragment.' },
+
+    // ── WRONG ANSWERS (7 — identity) ──
+    { ruleType:'wa',
+      passage: 'The first woman to lead the organization was _______ who restructured its operations and doubled its global membership within five years.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['Dr. Maria Santos,','Dr. Maria, Santos,','Dr. Maria Santos',', Dr. Maria Santos,'],
+      correct: 0,
+      explanation: '<strong>Identity Rule + Comma before "who":</strong> In English, you always need a comma before a nonrestrictive "who" or "which" clause — one that adds extra information rather than identifying which person. "Dr. Maria Santos, <em>who</em> restructured its operations" has a nonrestrictive clause (her name already identifies her), so the comma before "who" is required. B splits the full name incorrectly. C drops the comma before "who" (wrong). D wraps the name in commas as if it\'s extra information (wrong).' },
+
+    // ── WRONG ANSWERS (8 — period + semicolon) ──
+    { ruleType:'wa',
+      passage: 'The composer spent four years writing the symphony <span class="q-blank">______</span> premiered to a standing ovation at Carnegie Hall.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: ['. It','; it',', it',', and it'],
+      correct: 3,
+      explanation: '<strong>Wrong Answers — Period + Semicolon Rule:</strong> A period (A) and a semicolon (B) both appear in the choices — both are automatically eliminated. They\'re interchangeable and cancel each other out. That leaves C (comma splice, wrong) and D (comma + "and," correct).' },
+
+    // ── WRONG ANSWERS (9 — transition) ──
+    { ruleType:'wa',
+      passage: 'The results were inconclusive. <span class="q-blank">______</span> additional testing across a larger sample group would be required before any conclusions could be drawn.',
+      prompt: 'Which choice correctly begins the second sentence?',
+      choices: ['Therefore','Therefore,','Therefore;',', Therefore,'],
+      correct: 1,
+      explanation: '<strong>Wrong Answers — Transitions Rule:</strong> Transitions starting a sentence are immediately followed by a comma. A has no comma after "Therefore" (wrong). C places a semicolon after it — the semicolon belongs <em>before</em> a mid-sentence transition, not after. D adds a comma before "Therefore" at the start of a sentence (wrong).' },
+
+    // ── DANGLING PARTICIPLES (6) ──
+    { ruleType:'dp',
+      passage: 'Born in a small fishing village on the coast of Portugal, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [
+        'a lifelong passion for the sea shaped her entire literary career.',
+        'the ocean became a central symbol throughout her novels.',
+        'Elena Sousa drew on memories of the sea in every novel she wrote.',
+        'it was the ocean that inspired her writing throughout her life.'
+      ],
+      correct: 2, boldSubject: 'Elena Sousa',
+      explanation: '"Born in a small fishing village" must immediately be followed by the person who was born there. Only C — <strong>Elena Sousa</strong> — was born in the village. "A lifelong passion," "the ocean," and "it" cannot be born anywhere.' },
+
+    // ── DANGLING PARTICIPLES (7) ──
+    { ruleType:'dp',
+      passage: 'Trained as a civil engineer, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [
+        'the city\'s crumbling infrastructure was her primary concern.',
+        'Dr. Chen brought a rigorous analytical approach to her environmental research.',
+        'it was clear that the problem demanded a technical solution.',
+        'a new methodology was developed to assess structural risk.'
+      ],
+      correct: 1, boldSubject: 'Dr. Chen',
+      explanation: '"Trained as a civil engineer" must immediately be followed by the person who was trained. Only B — <strong>Dr. Chen</strong> — underwent the training. "The city\'s infrastructure," "it," and "a new methodology" cannot be trained.' },
+
+    // ── DANGLING PARTICIPLES (8) ──
+    { ruleType:'dp',
+      passage: 'Struggling to meet the deadline, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [
+        'the manuscript was rushed through editing in just three days.',
+        'the entire team worked through the weekend without a break.',
+        'fatigue began to affect the quality of the final chapters.',
+        'an extension was requested from the publisher at the last moment.'
+      ],
+      correct: 1, boldSubject: 'entire team',
+      explanation: '"Struggling to meet the deadline" must immediately be followed by whoever was struggling. Only B — the <strong>entire team</strong> — was doing the struggling. "The manuscript," "fatigue," and "an extension" cannot struggle to meet deadlines.' },
+
+    // ── DANGLING PARTICIPLES (9) ──
+    { ruleType:'dp',
+      passage: 'Considered one of the most important discoveries in modern neuroscience, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [
+        'the research community was skeptical of the findings at first.',
+        'scientists debated the methodology for years after publication.',
+        'the discovery of mirror neurons changed how researchers understand empathy.',
+        'it took decades for the findings to be widely accepted.'
+      ],
+      correct: 2, boldSubject: 'discovery of mirror neurons',
+      explanation: '"Considered one of the most important discoveries" must immediately be followed by what was considered important. Only C — the <strong>discovery of mirror neurons</strong> — was considered the discovery. "The research community," "scientists," and "it" were not considered the discovery itself.' },
+
+    // ── DANGLING PARTICIPLES (10) ──
+    { ruleType:'dp',
+      passage: 'Inspired by her grandmother\'s recipes, <span class="q-blank">______</span>',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [
+        'a cookbook celebrating traditional Yemeni cuisine was compiled.',
+        'the dishes themselves became a form of cultural preservation.',
+        'Layla Hamdan opened a restaurant devoted to traditional Yemeni cuisine.',
+        'it was the flavors of childhood that drove her passion for cooking.'
+      ],
+      correct: 2, boldSubject: 'Layla Hamdan',
+      explanation: '"Inspired by her grandmother\'s recipes" must immediately be followed by the person who was inspired. Only C — <strong>Layla Hamdan</strong> — was inspired. "A cookbook," "the dishes," and "it" cannot be inspired.' },
+
+    // ── SUSPICIONS (7 — semicolon) ──
+    { ruleType:'su',
+      passage: 'The research station had operated continuously for forty years <span class="q-blank">______</span> maintained some of the most comprehensive climate records in the Southern Hemisphere.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', it', 'but it', '; it', ', however it'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone semicolon in C is your suspect. Read it through: "The research station had operated for forty years; it maintained comprehensive climate records." ✓ A is a comma splice. B uses "but" — having records is not a contrast to operating continuously. D uses "however" without a semicolon before it.' },
+
+    // ── SUSPICIONS (8 — period) ──
+    { ruleType:'su',
+      passage: 'The novelist had been working on her third book for nearly a decade <span class="q-blank">______</span> finally appeared, critics hailed it as her finest work yet.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', when it', 'but when it', '. When it', ', however when it'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone period in C is your suspect. Read it through: "The novelist had been working for nearly a decade. When it finally appeared, critics hailed it as her finest work." ✓ A is a comma splice. B uses "but" — critical praise is not a contrast to years of work. D uses "however" incorrectly.' },
+
+    // ── SUSPICIONS (9 — semicolon + autoWrong) ──
+    { ruleType:'su', autoWrong: 1,
+      passage: 'The new transit line connects the airport to the city center <span class="q-blank">______</span> reduces average commute times by nearly forty minutes.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', it', 'and it', '; it', 'but it'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone semicolon in C is your suspect. Read it through: "The transit line connects the airport; it reduces commute times by forty minutes." ✓ A is a comma splice. B was automatically wrong — you always need a comma before "and" when connecting two independent clauses. D uses "but" — reducing commute times is not a contrast to connecting the airport.' },
+
+    // ── SUSPICIONS (10 — period) ──
+    { ruleType:'su',
+      passage: 'The documentary filmmaker spent two years traveling across twelve countries <span class="q-blank">______</span> won the Grand Jury Prize at Sundance.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', the resulting film', 'but the resulting film', '. The resulting film', ', however the resulting film'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone period in C is your suspect. Read it through: "The filmmaker spent two years traveling across twelve countries. The resulting film won the Grand Jury Prize." ✓ A is a comma splice. B uses "but" — winning a prize is not a contrast to two years of travel. D uses "however" without a semicolon before it.' },
+
+    // ── SUSPICIONS (11 — colon) ──
+    { ruleType:'su',
+      passage: 'The fitness program is built around four core principles <span class="q-blank">______</span> adequate recovery, nutritional balance, and consistent sleep.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', progressive overload,', ', and progressive overload,', ': progressive overload,', '; progressive overload,'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone colon in C is your suspect — a colon introduces a list or explanation. "Four core principles: progressive overload, adequate recovery, nutritional balance, and consistent sleep." ✓ The word "four" signals a list is coming. A is a comma splice. B uses "and" which doesn\'t introduce a defined list. D uses a semicolon before a list, which is incorrect.' },
+
+    // ── SUSPICIONS (12 — semicolon) ──
+    { ruleType:'su',
+      passage: 'The bridge had stood for more than a century <span class="q-blank">______</span> determined it would need to be completely rebuilt rather than simply repaired.',
+      prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+      choices: [', engineers', 'but engineers', '; engineers', ', however engineers'],
+      correct: 2,
+      explanation: '<strong>Suspicions Rule:</strong> The lone semicolon in C is your suspect. Read it through: "The bridge had stood for more than a century; engineers determined it would need to be rebuilt." ✓ A is a comma splice. B uses "but" — the determination to rebuild is not a contrast to the bridge\'s age. D uses "however" without a semicolon before it.' },
+
+  ];
+
+  // Shuffle helper
+  function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function startMixedReview() {
+    questionSets[8] = shuffleArray(mixedReviewBase);
+    document.querySelector('#questions .q-body').innerHTML = qBodyOriginalHTML;
+    fromSection = 8;
+    currentSet = questionSets[8];
+    currentQ = 0;
+    correctRuleCount = 0;
+    correctAnswerCount = 0;
+    document.getElementById('q-section-title').innerHTML =
+      'Grammar Guide › <strong>' + sectionTitles[8] + '</strong>';
+    document.getElementById('q-back-btn').onclick = () => showLanding();
+    document.getElementById('q-next-btn').onclick = advanceQuestion;
+    showScreen('questions');
+    renderQuestion();
+  }
+
   // ─── QUESTION STATE ────────────────────────────────────
   let currentSet = [];
   let currentQ = 0;
@@ -2601,6 +3231,8 @@
     if (fromSection === 4) { renderQuestion4(); return; }
     if (fromSection === 5) { renderQuestion5(); return; }
     if (fromSection === 6) { renderQuestion6(); return; }
+    if (fromSection === 7) { renderQuestion7(); return; }
+    if (fromSection === 8) { renderQuestion8(); return; }
 
     const q = currentSet[currentQ];
     const total = currentSet.length;
@@ -3064,6 +3696,166 @@
       currentQ + 1 < currentSet.length ? 'Next →' : 'See Results';
   }
 
+  // ─── SECTION 7: NO PUNCTUATION RENDERER ───────────────
+  function renderQuestion7() {
+    const q = currentSet[currentQ];
+    const total = currentSet.length;
+    const letters = ['A','B','C','D'];
+
+    document.getElementById('q-progress-text').textContent = `Question ${currentQ + 1} of ${total}`;
+    document.getElementById('q-progress-fill').style.width = ((currentQ / total) * 100) + '%';
+    document.getElementById('q-passage').innerHTML = q.passage + '<div class="q-prompt">' + q.prompt + '</div>';
+
+    document.getElementById('rule-check-s1').style.display = 'none';
+    document.getElementById('q-phase-card').style.display = 'none';
+    document.getElementById('ite-result-card').style.display = 'none';
+    document.getElementById('answer-section-label').textContent = 'Answer Choices';
+
+    const oldExplain = document.getElementById('np-explain');
+    if (oldExplain) oldExplain.remove();
+
+    document.getElementById('choices-list').innerHTML = q.choices.map((c, i) => `
+      <button class="choice-btn" id="np-btn-${i}" onclick="selectAnswer7NP(${i})">
+        <span class="choice-letter">${letters[i]}</span>
+        <span class="choice-text" id="np-text-${i}">${c}</span>
+        <span class="choice-icon" id="np-icon-${i}"></span>
+      </button>`).join('');
+
+    document.getElementById('answer-section').insertAdjacentHTML('afterend',
+      '<div id="np-explain" style="display:none;" class="q-explain-card"></div>');
+
+    document.getElementById('q-next-btn').style.display = 'none';
+  }
+
+  function selectAnswer7NP(idx) {
+    const q = currentSet[currentQ];
+    const letters = ['A','B','C','D'];
+    const correct = q.correct;
+    const isRight = idx === correct;
+
+    for (let i = 0; i < q.choices.length; i++) {
+      const btn  = document.getElementById('np-btn-' + i);
+      const icon = document.getElementById('np-icon-' + i);
+      if (btn) btn.disabled = true;
+      if (!btn) continue;
+      if (i === correct)     { btn.classList.add('selected-correct'); icon.textContent = '✓'; }
+      else if (i === idx)    { btn.classList.add('selected-wrong');   icon.textContent = '✗'; }
+    }
+
+    if (isRight) correctAnswerCount++;
+
+    const card = document.getElementById('np-explain');
+    if (card) {
+      card.style.display = 'block';
+      card.className = isRight ? 'q-explain-card q-explain-correct' : 'q-explain-card q-explain-wrong';
+      card.innerHTML = (isRight ? '<strong>Great job!</strong> ' : `<strong>Not quite — the answer is ${letters[correct]}.</strong> `) + q.explanation;
+    }
+
+    document.getElementById('q-next-btn').style.display = 'block';
+  }
+
+  // ─── SECTION 8: MIXED REVIEW RENDERER ─────────────────
+  function renderQuestion8() {
+    const q = currentSet[currentQ];
+    const total = currentSet.length;
+    const letters = ['A','B','C','D'];
+
+    // Progress
+    document.getElementById('q-progress-text').textContent = `Question ${currentQ + 1} of ${total}`;
+    document.getElementById('q-progress-fill').style.width = ((currentQ / total) * 100) + '%';
+
+    // Passage
+    document.getElementById('q-passage').innerHTML =
+      q.passage + '<div class="q-prompt">' + q.prompt + '</div>';
+
+    // Hide section-specific UI elements
+    document.getElementById('rule-check-s1').style.display = 'none';
+    document.getElementById('q-phase-card').style.display = 'none';
+    document.getElementById('ite-result-card').style.display = 'none';
+
+    // Remove leftover explain card from previous question
+    const oldExplain = document.getElementById('mr-explain');
+    if (oldExplain) oldExplain.remove();
+
+    // Answer section
+    document.getElementById('answer-section-label').textContent = 'Answer Choices';
+    document.getElementById('choices-list').innerHTML = q.choices.map((c, i) => `
+      <button class="choice-btn" id="mr-btn-${i}" onclick="selectAnswer8(${i})">
+        <span class="choice-letter">${letters[i]}</span>
+        <span class="choice-text" id="mr-text-${i}">${c}</span>
+        <span class="choice-icon" id="mr-icon-${i}"></span>
+      </button>`).join('');
+
+    // Inject explain card placeholder after the answer section
+    document.getElementById('answer-section').insertAdjacentHTML('afterend',
+      '<div id="mr-explain" style="display:none;" class="q-explain-card"></div>');
+
+    // Hide next button until answered
+    document.getElementById('q-next-btn').style.display = 'none';
+  }
+
+  function selectAnswer8(idx) {
+    const q = currentSet[currentQ];
+    const letters = ['A','B','C','D'];
+    const correct = q.correct;
+    const isRight = idx === correct;
+
+    // Disable all buttons
+    for (let i = 0; i < q.choices.length; i++) {
+      const btn = document.getElementById('mr-btn-' + i);
+      if (btn) btn.disabled = true;
+    }
+
+    // Colour buttons
+    for (let i = 0; i < q.choices.length; i++) {
+      const btn  = document.getElementById('mr-btn-' + i);
+      const icon = document.getElementById('mr-icon-' + i);
+      const txt  = document.getElementById('mr-text-' + i);
+      if (!btn) continue;
+      if (i === correct) {
+        btn.classList.add('selected-correct');
+        icon.textContent = '✓';
+        if (q.boldSubject && txt) {
+          txt.innerHTML = q.choices[i].replace(
+            q.boldSubject,
+            `<strong style="color:#1a5a38;">${q.boldSubject}</strong>`
+          );
+        }
+      } else if (i === idx) {
+        btn.classList.add('selected-wrong');
+        icon.textContent = '✗';
+      }
+    }
+
+    if (isRight) correctAnswerCount++;
+
+    // Show explain card
+    const card = document.getElementById('mr-explain');
+    if (card) {
+      card.style.display = 'block';
+      if (isRight) {
+        card.className = 'q-explain-card q-explain-correct';
+        card.innerHTML = `<strong>Great job!</strong> ${q.explanation}`;
+        // SuperCommas: show color-coded three-item breakdown
+        if (q.ruleType === 'sc' && q.sc_reveal) {
+          document.getElementById('ite-result-title').textContent = 'Three Parallel Items';
+          document.getElementById('ite-result-passage').innerHTML = q.sc_reveal;
+          document.getElementById('ite-result-legend').innerHTML =
+            '<span style="color:#5b8cf7;"><strong>1</strong> — First item</span>' +
+            '<span style="color:#e08030;"><strong>2</strong> — Second item</span>' +
+            '<span style="color:#3a9a6a;"><strong>3</strong> — Third item</span>';
+          document.getElementById('ite-result-card').style.display = 'block';
+        }
+      } else {
+        card.className = 'q-explain-card q-explain-wrong';
+        card.innerHTML = `<strong>Not quite.</strong> The correct answer was <strong>${letters[correct]}</strong>. Keep going!`;
+      }
+    }
+
+    // Show next button
+    document.getElementById('q-next-btn').style.display = 'block';
+  }
+
   function advanceQuestion() {
     currentQ++;
     renderQuestion();
@@ -3085,8 +3877,8 @@
         <div class="score-num">${correctAnswerCount} / ${total}</div>
         <div class="score-sub">questions answered correctly</div>
         <div class="score-actions">
-          <button class="score-btn primary" onclick="startQuestions(${fromSection})">Try Again</button>
-          <button class="score-btn secondary" onclick="showExplanation(${fromSection})">Back to Explanation</button>
+          <button class="score-btn primary" onclick="${fromSection === 8 ? 'startMixedReview()' : 'startQuestions(' + fromSection + ')'}">Try Again</button>
+          ${fromSection === 8 ? '' : `<button class="score-btn secondary" onclick="showExplanation(${fromSection})">Back to Explanation</button>`}
           <button class="score-btn secondary" onclick="showLanding()">All Rules</button>
         </div>
       </div>`;

@@ -1302,6 +1302,23 @@
     .q-passage-card { padding: 20px; }
     .rule-check-card { padding: 18px 20px; }
   }
+  /* Possessives matching exercise */
+  .poss-btn {
+    background: #f0edff;
+    border: 1.5px solid #b09de0;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    color: #33206a;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s;
+    text-align: left;
+    width: 100%;
+  }
+  .poss-btn:hover:not(:disabled) { background: #e0d8ff; border-color: #7c5cc0; }
+  .poss-btn.poss-selected { background: #c8b8ff; border-color: #6040c0; font-weight: 700; }
+  .poss-btn.poss-matched { background: #e8f5e9; border-color: #66bb6a; color: #2e7d32; font-weight: 700; cursor: default; }
 </style>
 </head>
 <body>
@@ -1394,6 +1411,18 @@
       <div class="card-inner">
         <div class="card-num">7</div>
         <div class="card-text">
+          <h3>Possessives</h3>
+          <div class="card-badge">✓ Available</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="showExplanation(8)">
+      <div class="card-accent"></div>
+      <div class="card-inner">
+        <div class="card-num">8</div>
+        <div class="card-text">
           <h3>No Punctuation</h3>
           <div class="card-badge">✓ Available</div>
         </div>
@@ -1404,7 +1433,7 @@
     <div class="card" onclick="startMixedReview()">
       <div class="card-accent"></div>
       <div class="card-inner">
-        <div class="card-num">8</div>
+        <div class="card-num">9</div>
         <div class="card-text">
           <h3>Test Review</h3>
           <div class="card-badge" style="background:#fff8e0;color:#8a6000;">★ All Rules</div>
@@ -2057,8 +2086,193 @@
 
   </div>
 
-  <!-- Rule 7: No Punctuation -->
+  <!-- Rule 7: Possessives -->
   <div id="exp-7" class="exp-body" style="display:none;">
+
+    <div class="exp-title">
+      <div class="rule-num">Rule 7</div>
+      <h2>Possessives</h2>
+    </div>
+
+    <div class="step-card" style="background:#f0f4ff; border:1.5px solid #a0b4f0;">
+      <h3 style="color:#2040a0;">The Core Idea</h3>
+      <p style="font-size:0.9rem; color:#555; line-height:1.6; margin-top:6px;">An apostrophe shows <strong>ownership</strong>. Where the apostrophe goes depends on whether the <em>owner</em> is singular or plural — not on whether the <em>thing owned</em> is singular or plural.</p>
+    </div>
+
+    <!-- Four examples table -->
+    <div style="margin:24px 0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <thead>
+          <tr>
+            <th style="background:#eef2ff; color:#3050c0; padding:10px 14px; text-align:left; border-bottom:2px solid #c0ccf0;">Form</th>
+            <th style="background:#eef2ff; color:#3050c0; padding:10px 14px; text-align:left; border-bottom:2px solid #c0ccf0;">Meaning</th>
+            <th style="background:#eef2ff; color:#3050c0; padding:10px 14px; text-align:left; border-bottom:2px solid #c0ccf0;">Owner</th>
+            <th style="background:#eef2ff; color:#3050c0; padding:10px 14px; text-align:left; border-bottom:2px solid #c0ccf0;">Thing Owned</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff;">
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8; font-weight:700; font-size:1rem; color:#222;">the boy's phone</td>
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8; color:#444;">the phone of <em>one</em> boy</td>
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8;"><span style="background:#e8f5e9; color:#2e7d32; padding:2px 8px; border-radius:4px; font-size:0.82rem;">singular</span></td>
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8;"><span style="background:#e8f5e9; color:#2e7d32; padding:2px 8px; border-radius:4px; font-size:0.82rem;">singular</span></td>
+          </tr>
+          <tr style="background:#f8f9ff;">
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8; font-weight:700; font-size:1rem; color:#222;">the boy's phones</td>
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8; color:#444;">the phones of <em>one</em> boy</td>
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8;"><span style="background:#e8f5e9; color:#2e7d32; padding:2px 8px; border-radius:4px; font-size:0.82rem;">singular</span></td>
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8;"><span style="background:#fff3e0; color:#e65100; padding:2px 8px; border-radius:4px; font-size:0.82rem;">plural</span></td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8; font-weight:700; font-size:1rem; color:#222;">the boys' phone</td>
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8; color:#444;">the phone of <em>many</em> boys</td>
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8;"><span style="background:#fff3e0; color:#e65100; padding:2px 8px; border-radius:4px; font-size:0.82rem;">plural</span></td>
+            <td style="padding:10px 14px; border-bottom:1px solid #dde4f8;"><span style="background:#e8f5e9; color:#2e7d32; padding:2px 8px; border-radius:4px; font-size:0.82rem;">singular</span></td>
+          </tr>
+          <tr style="background:#f8f9ff;">
+            <td style="padding:10px 14px; font-weight:700; font-size:1rem; color:#222;">the boys' phones</td>
+            <td style="padding:10px 14px; color:#444;">the phones of <em>many</em> boys</td>
+            <td style="padding:10px 14px;"><span style="background:#fff3e0; color:#e65100; padding:2px 8px; border-radius:4px; font-size:0.82rem;">plural</span></td>
+            <td style="padding:10px 14px;"><span style="background:#fff3e0; color:#e65100; padding:2px 8px; border-radius:4px; font-size:0.82rem;">plural</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem; color:#888; margin-top:8px; text-align:center;">Notice: the apostrophe moves — but only because the <strong>owner</strong> changed, not because of what's owned.</p>
+    </div>
+
+    <!-- Rule summary cards -->
+    <div style="display:flex; gap:14px; margin:20px 0; flex-wrap:wrap;">
+      <div style="flex:1; min-width:200px; background:#e8f5e9; border:1.5px solid #81c784; border-radius:10px; padding:14px 18px;">
+        <div style="font-weight:700; color:#2e7d32; font-size:0.95rem; margin-bottom:6px;">Singular owner → 's</div>
+        <div style="font-size:0.85rem; color:#444; line-height:1.5;">boy → <strong>boy's</strong><br>student → <strong>student's</strong><br>sunset → <strong>sunset's</strong></div>
+      </div>
+      <div style="flex:1; min-width:200px; background:#fff3e0; border:1.5px solid #ffb74d; border-radius:10px; padding:14px 18px;">
+        <div style="font-weight:700; color:#e65100; font-size:0.95rem; margin-bottom:6px;">Plural owner (ends in s) → s'</div>
+        <div style="font-size:0.85rem; color:#444; line-height:1.5;">boys → <strong>boys'</strong><br>students → <strong>students'</strong><br>sunsets → <strong>sunsets'</strong></div>
+      </div>
+    </div>
+
+    <!-- Two illustrative examples -->
+    <div class="step-card" style="background:#fafafa; border:1.5px solid #ddd; margin-bottom:14px;">
+      <h3 style="color:#333; margin-bottom:10px;">Illustrative Examples</h3>
+      <div style="display:flex; gap:24px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:180px;">
+          <div style="font-size:1.05rem; font-weight:700; color:#222; margin-bottom:4px;">the boy's phone</div>
+          <div style="font-size:0.83rem; color:#666;">One boy owns one phone.<br><em>boy</em> is singular → <strong>boy's</strong></div>
+        </div>
+        <div style="flex:1; min-width:180px;">
+          <div style="font-size:1.05rem; font-weight:700; color:#222; margin-bottom:4px;">the student's book</div>
+          <div style="font-size:0.83rem; color:#666;">One student owns one book.<br><em>student</em> is singular → <strong>student's</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Matching Exercise -->
+    <div class="step-card" style="background:#f5f0ff; border:1.5px solid #b09de0;">
+      <h3 style="color:#4a2090; margin-bottom:4px;">Interactive Exercise</h3>
+      <p style="font-size:0.85rem; color:#666; margin-bottom:16px;">Match each possessive form to its correct meaning. Click a form on the left, then click its meaning on the right.</p>
+      <div id="poss-match-area" style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+        <div id="poss-left" style="display:flex; flex-direction:column; gap:10px; min-width:180px; flex:1;">
+          <button class="poss-btn" data-id="a" onclick="possBtnClick('left','a')">the sunset's color</button>
+          <button class="poss-btn" data-id="b" onclick="possBtnClick('left','b')">the sunsets' colors</button>
+          <button class="poss-btn" data-id="c" onclick="possBtnClick('left','c')">the sunset's colors</button>
+          <button class="poss-btn" data-id="d" onclick="possBtnClick('left','d')">the sunsets' color</button>
+        </div>
+        <div id="poss-right" style="display:flex; flex-direction:column; gap:10px; min-width:200px; flex:1;">
+          <button class="poss-btn" data-id="2" onclick="possBtnClick('right','2')">many sunsets, many colors</button>
+          <button class="poss-btn" data-id="1" onclick="possBtnClick('right','1')">one sunset, one color</button>
+          <button class="poss-btn" data-id="4" onclick="possBtnClick('right','4')">many sunsets, one color</button>
+          <button class="poss-btn" data-id="3" onclick="possBtnClick('right','3')">one sunset, many colors</button>
+        </div>
+      </div>
+      <div id="poss-feedback" style="margin-top:16px; font-size:0.88rem; min-height:28px; text-align:center; font-weight:600;"></div>
+      <div id="poss-matched-count" style="font-size:0.78rem; color:#888; text-align:center; margin-top:4px;"></div>
+    </div>
+
+    <script>
+    (function(){
+      const correctMap = { a:'1', b:'2', c:'3', d:'4' };
+      let leftSel = null, rightSel = null;
+      let matched = {};
+
+      function possBtnClick(side, id) {
+        if (side === 'left'  && matched[id]) return;
+        if (side === 'right' && Object.values(matched).includes(id)) return;
+
+        if (side === 'left') {
+          document.querySelectorAll('#poss-left .poss-btn').forEach(b => b.classList.remove('poss-selected'));
+          leftSel = id;
+          document.querySelector('#poss-left [data-id="'+id+'"]').classList.add('poss-selected');
+        } else {
+          document.querySelectorAll('#poss-right .poss-btn').forEach(b => b.classList.remove('poss-selected'));
+          rightSel = id;
+          document.querySelector('#poss-right [data-id="'+id+'"]').classList.add('poss-selected');
+        }
+        if (leftSel && rightSel) checkPossMatch();
+      }
+      window.possBtnClick = possBtnClick;
+
+      function checkPossMatch() {
+        const fb = document.getElementById('poss-feedback');
+        const mc = document.getElementById('poss-matched-count');
+        if (correctMap[leftSel] === rightSel) {
+          const lb = document.querySelector('#poss-left [data-id="'+leftSel+'"]');
+          const rb = document.querySelector('#poss-right [data-id="'+rightSel+'"]');
+          lb.classList.remove('poss-selected');
+          rb.classList.remove('poss-selected');
+          lb.classList.add('poss-matched');
+          rb.classList.add('poss-matched');
+          lb.disabled = true;
+          rb.disabled = true;
+          matched[leftSel] = rightSel;
+          const count = Object.keys(matched).length;
+          fb.style.color = '#2e7d32';
+          if (count === 4) {
+            fb.textContent = '🎉 All matched! You\'ve got possessives down.';
+          } else {
+            fb.textContent = '✓ Correct!';
+          }
+          mc.textContent = count + ' of 4 matched';
+        } else {
+          fb.style.color = '#c62828';
+          fb.textContent = '✗ Not quite — the apostrophe position depends on the owner, not what\'s owned.';
+          document.querySelectorAll('.poss-btn').forEach(b => b.classList.remove('poss-selected'));
+        }
+        leftSel = null;
+        rightSel = null;
+      }
+    })();
+    </script>
+
+    <!-- Bonus note: multiple owners -->
+    <div class="step-card" style="background:#fffbe6; border:1.5px solid #f5d060; margin-top:8px;">
+      <h3 style="color:#7a5000; margin-bottom:10px;">Bonus: What about two owners?</h3>
+      <p style="font-size:0.85rem; color:#555; line-height:1.6; margin-top:0; margin-bottom:14px;">When two separate groups each own their own things, <strong>both</strong> get an apostrophe.</p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="background:#fff; border-radius:8px; padding:12px 16px; border:1px solid #e8d070;">
+          <div style="font-size:1rem; font-weight:700; color:#222; margin-bottom:3px;">the boys' and girls' teams</div>
+          <div style="font-size:0.82rem; color:#666;">The boys have their own team. The girls have their own team. Each group owns something separately → both get apostrophes.</div>
+        </div>
+        <div style="background:#fff; border-radius:8px; padding:12px 16px; border:1px solid #e8d070;">
+          <div style="font-size:1rem; font-weight:700; color:#222; margin-bottom:3px;">the cats' and dogs' food bowls</div>
+          <div style="font-size:0.82rem; color:#666;">Cats have their own bowls; dogs have their own bowls — separate ownership → <strong>cats'</strong> and <strong>dogs'</strong>.</div>
+        </div>
+        <div style="background:#fff; border-radius:8px; padding:12px 16px; border:1px solid #e8d070;">
+          <div style="font-size:1rem; font-weight:700; color:#222; margin-bottom:3px;">the teachers' and students' schedules</div>
+          <div style="font-size:0.82rem; color:#666;">Teachers have their own schedules; students have their own → separate ownership → both get apostrophes.</div>
+        </div>
+        <div style="background:#f0faf4; border-radius:8px; padding:12px 16px; border:1px solid #90d4a8; margin-top:4px;">
+          <div style="font-size:0.85rem; color:#1a5c35; line-height:1.55;"><strong>Contrast — joint ownership:</strong> If two people share <em>one</em> thing together, only the last name gets the apostrophe.<br><span style="font-size:0.95rem; font-weight:700; color:#222;">Romeo and Juliet's story</span> — one shared story → only <strong>Juliet's</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="next-btn" onclick="startQuestions(7)">Practice Questions →</button>
+
+  </div>
+
+  <!-- Rule 8: No Punctuation -->
+  <div id="exp-8" class="exp-body" style="display:none;">
 
     <div class="exp-title">
       <div class="rule-num">Rule 7</div>
@@ -2134,7 +2348,7 @@
 
     </div><!-- end flow2-wrap -->
 
-    <button class="next-btn" onclick="startQuestions(7)">Practice Questions →</button>
+    <button class="next-btn" onclick="startQuestions(8)">Practice Questions →</button>
 
   </div>
 
@@ -2209,8 +2423,9 @@
     4: 'Wrong Answers',
     5: 'Dangling Participles',
     6: 'Suspicions',
-    7: 'No Punctuation',
-    8: 'Test Review'
+    7: 'Possessives',
+    8: 'No Punctuation',
+    9: 'Test Review'
   };
 
   function showScreen(id) {
@@ -2690,6 +2905,79 @@
 
   // ─── SECTION 7: NO PUNCTUATION ──────────────────────────
   questionSets[7] = [
+    {
+      passage: "The <span class='q-blank'>______</span> habitat spans several national parks and is carefully monitored by conservation teams.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["wolves'", "wolf's", "wolves", "wolfes'"],
+      correct: 0,
+      explanation: "Multiple wolves share the habitat, so the owner is plural: <strong>wolves'</strong> (apostrophe after the s). 'Wolf's' (B) would mean one wolf's habitat. 'Wolves' (C) has no apostrophe. 'Wolfes'' (D) is a misspelling — the plural of wolf is 'wolves,' not 'wolfes.'"
+    },
+    {
+      passage: "Despite the long hours, the <span class='q-blank'>______</span> dedication to accuracy made the final report remarkably precise.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["researchers", "researcher's", "researchers'", "researcher"],
+      correct: 2,
+      explanation: "Multiple researchers worked on the report, so the owner is plural: <strong>researchers'</strong> (apostrophe after the s). 'Researcher's' (B) would mean only one researcher. 'Researchers' (A) and 'researcher' (D) have no apostrophe."
+    },
+    {
+      passage: "The museum's newest exhibit features the <span class='q-blank'>______</span> original correspondence from the 1820s.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["composer's", "composers'", "composers", "composer"],
+      correct: 0,
+      explanation: "One composer's letters are featured, so the owner is singular: <strong>composer's</strong>. 'Composers'' (B) would mean multiple composers. 'Composers' (C) and 'composer' (D) have no apostrophe to show possession."
+    },
+    {
+      passage: "The <span class='q-blank'>______</span> unanimous decision surprised even the most optimistic members of the legal team.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["jury's", "juries'", "jurys'", "jury"],
+      correct: 0,
+      explanation: "One jury made the decision, so the owner is singular: <strong>jury's</strong>. 'Juries'' (B) would mean multiple juries. 'Jurys'' (C) is misspelled — the plural of jury is 'juries,' not 'jurys.' 'Jury' (D) has no apostrophe."
+    },
+    {
+      passage: "After the storm, inspectors evaluated each <span class='q-blank'>______</span> structural integrity before allowing residents to return.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["buildings'", "building's", "buildings", "building"],
+      correct: 1,
+      explanation: "Inspectors evaluated each building one at a time, so the owner is singular: <strong>building's</strong>. 'Buildings'' (A) would refer to multiple buildings collectively. 'Buildings' (C) and 'building' (D) lack an apostrophe."
+    },
+    {
+      passage: "The <span class='q-blank'>______</span> annual report revealed record-breaking sales in three consecutive quarters.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["companys'", "companies'", "company's", "companies"],
+      correct: 2,
+      explanation: "One company published the annual report, so the owner is singular: <strong>company's</strong>. 'Companies'' (B) would mean multiple companies. 'Companys'' (A) is misspelled — the plural of company is 'companies.' 'Companies' (D) has no apostrophe."
+    },
+    {
+      passage: "The professor analyzed the <span class='q-blank'>______</span> distinct approaches to solving the equation, noting where they overlapped.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["students'", "student's", "students", "student"],
+      correct: 0,
+      explanation: "Multiple students submitted different approaches, so the owner is plural: <strong>students'</strong>. 'Student's' (B) would mean one student's approach. 'Students' (C) and 'student' (D) lack an apostrophe."
+    },
+    {
+      passage: "Ecologists were surprised by the <span class='q-blank'>______</span> unexpected migration pattern, which differed from all previous records.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["species'", "specieses'", "species's", "species"],
+      correct: 0,
+      explanation: "One species had the unusual migration pattern. 'Species' is an irregular noun — so to show possession, you write <strong>species'</strong> (just add an apostrophe). 'Specieses'' (B) is not a word. 'Species's' (C) is used by some style guides but is not tested on the SAT. 'Species' (D) has no apostrophe."
+    },
+    {
+      passage: "The athletic director announced that the <span class='q-blank'>______</span> championship banners would hang side by side in the gymnasium.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["boys' and girls'", "boy's and girl's", "boys and girls'", "boys' and girls"],
+      correct: 0,
+      explanation: "Two separate groups — the boys and the girls — each own their own championship banner. When two groups each own their own things separately, <strong>both</strong> get apostrophes: <strong>boys'</strong> and <strong>girls'</strong>. 'Boy's and girl's' (B) would suggest singular individuals. 'Boys and girls'' (C) only marks one group. 'Boys' and girls' (D) leaves 'girls' without an apostrophe."
+    },
+    {
+      passage: "After the merger, the <span class='q-blank'>______</span> contracts were reviewed by the legal team to identify any conflicts.",
+      prompt: "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      choices: ["managers' and employees'", "manager's and employee's", "managers and employees'", "managers' and employees"],
+      correct: 0,
+      explanation: "Managers have their own contracts; employees have their own contracts — each group owns something separately, so <strong>both</strong> get apostrophes: <strong>managers'</strong> and <strong>employees'</strong>. This is two-owner separate possession. 'Manager's and employee's' (B) implies just one manager and one employee. The other choices mark only one group."
+    }
+  ];
+
+  questionSets[8] = [
     {
       passage: 'A harpsichord may look just like a piano, but the difference between the two instruments is easy to hear. When a harpsichord\'s keys are pressed, the strings inside the <span class="q-blank">______</span> are plucked, not struck.',
       prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
@@ -3176,15 +3464,15 @@
   }
 
   function startMixedReview() {
-    questionSets[8] = shuffleArray(mixedReviewBase);
+    questionSets[9] = shuffleArray(mixedReviewBase);
     document.querySelector('#questions .q-body').innerHTML = qBodyOriginalHTML;
-    fromSection = 8;
-    currentSet = questionSets[8];
+    fromSection = 9;
+    currentSet = questionSets[9];
     currentQ = 0;
     correctRuleCount = 0;
     correctAnswerCount = 0;
     document.getElementById('q-section-title').innerHTML =
-      'Grammar Guide › <strong>' + sectionTitles[8] + '</strong>';
+      'Grammar Guide › <strong>' + sectionTitles[9] + '</strong>';
     document.getElementById('q-back-btn').onclick = () => showLanding();
     document.getElementById('q-next-btn').onclick = advanceQuestion;
     showScreen('questions');
@@ -3233,6 +3521,7 @@
     if (fromSection === 6) { renderQuestion6(); return; }
     if (fromSection === 7) { renderQuestion7(); return; }
     if (fromSection === 8) { renderQuestion8(); return; }
+    if (fromSection === 9) { renderQuestion9(); return; }
 
     const q = currentSet[currentQ];
     const total = currentSet.length;
@@ -3696,8 +3985,66 @@
       currentQ + 1 < currentSet.length ? 'Next →' : 'See Results';
   }
 
-  // ─── SECTION 7: NO PUNCTUATION RENDERER ───────────────
+  // ─── SECTION 7: POSSESSIVES RENDERER ──────────────────
   function renderQuestion7() {
+    const q = currentSet[currentQ];
+    const total = currentSet.length;
+    const letters = ['A','B','C','D'];
+
+    document.getElementById('q-progress-text').textContent = `Question ${currentQ + 1} of ${total}`;
+    document.getElementById('q-progress-fill').style.width = ((currentQ / total) * 100) + '%';
+    document.getElementById('q-passage').innerHTML = q.passage + '<div class="q-prompt">' + q.prompt + '</div>';
+
+    document.getElementById('rule-check-s1').style.display = 'none';
+    document.getElementById('q-phase-card').style.display = 'none';
+    document.getElementById('ite-result-card').style.display = 'none';
+    document.getElementById('answer-section-label').textContent = 'Answer Choices';
+
+    const oldExplain = document.getElementById('poss-q-explain');
+    if (oldExplain) oldExplain.remove();
+
+    document.getElementById('choices-list').innerHTML = q.choices.map((c, i) => `
+      <button class="choice-btn" id="poss-q-btn-${i}" onclick="selectAnswer7Poss(${i})">
+        <span class="choice-letter">${letters[i]}</span>
+        <span class="choice-text" id="poss-q-text-${i}">${c}</span>
+        <span class="choice-icon" id="poss-q-icon-${i}"></span>
+      </button>`).join('');
+
+    document.getElementById('answer-section').insertAdjacentHTML('afterend',
+      '<div id="poss-q-explain" style="display:none;" class="q-explain-card"></div>');
+
+    document.getElementById('q-next-btn').style.display = 'none';
+  }
+
+  function selectAnswer7Poss(idx) {
+    const q = currentSet[currentQ];
+    const letters = ['A','B','C','D'];
+    const correct = q.correct;
+    const isRight = idx === correct;
+
+    for (let i = 0; i < q.choices.length; i++) {
+      const btn  = document.getElementById('poss-q-btn-' + i);
+      const icon = document.getElementById('poss-q-icon-' + i);
+      if (btn) btn.disabled = true;
+      if (!btn) continue;
+      if (i === correct)  { btn.classList.add('selected-correct'); icon.textContent = '✓'; }
+      else if (i === idx) { btn.classList.add('selected-wrong');   icon.textContent = '✗'; }
+    }
+
+    if (isRight) correctAnswerCount++;
+
+    const card = document.getElementById('poss-q-explain');
+    if (card) {
+      card.style.display = 'block';
+      card.className = isRight ? 'q-explain-card q-explain-correct' : 'q-explain-card q-explain-wrong';
+      card.innerHTML = (isRight ? '<strong>Great job!</strong> ' : `<strong>Not quite — the answer is ${letters[correct]}.</strong> `) + q.explanation;
+    }
+
+    document.getElementById('q-next-btn').style.display = 'block';
+  }
+
+  // ─── SECTION 8: NO PUNCTUATION RENDERER ───────────────
+  function renderQuestion8() {
     const q = currentSet[currentQ];
     const total = currentSet.length;
     const letters = ['A','B','C','D'];
@@ -3715,7 +4062,7 @@
     if (oldExplain) oldExplain.remove();
 
     document.getElementById('choices-list').innerHTML = q.choices.map((c, i) => `
-      <button class="choice-btn" id="np-btn-${i}" onclick="selectAnswer7NP(${i})">
+      <button class="choice-btn" id="np-btn-${i}" onclick="selectAnswer8NP(${i})">
         <span class="choice-letter">${letters[i]}</span>
         <span class="choice-text" id="np-text-${i}">${c}</span>
         <span class="choice-icon" id="np-icon-${i}"></span>
@@ -3727,7 +4074,7 @@
     document.getElementById('q-next-btn').style.display = 'none';
   }
 
-  function selectAnswer7NP(idx) {
+  function selectAnswer8NP(idx) {
     const q = currentSet[currentQ];
     const letters = ['A','B','C','D'];
     const correct = q.correct;
@@ -3754,8 +4101,8 @@
     document.getElementById('q-next-btn').style.display = 'block';
   }
 
-  // ─── SECTION 8: MIXED REVIEW RENDERER ─────────────────
-  function renderQuestion8() {
+  // ─── SECTION 9: MIXED REVIEW RENDERER ─────────────────
+  function renderQuestion9() {
     const q = currentSet[currentQ];
     const total = currentSet.length;
     const letters = ['A','B','C','D'];
@@ -3780,7 +4127,7 @@
     // Answer section
     document.getElementById('answer-section-label').textContent = 'Answer Choices';
     document.getElementById('choices-list').innerHTML = q.choices.map((c, i) => `
-      <button class="choice-btn" id="mr-btn-${i}" onclick="selectAnswer8(${i})">
+      <button class="choice-btn" id="mr-btn-${i}" onclick="selectAnswer9(${i})">
         <span class="choice-letter">${letters[i]}</span>
         <span class="choice-text" id="mr-text-${i}">${c}</span>
         <span class="choice-icon" id="mr-icon-${i}"></span>
@@ -3794,7 +4141,7 @@
     document.getElementById('q-next-btn').style.display = 'none';
   }
 
-  function selectAnswer8(idx) {
+  function selectAnswer9(idx) {
     const q = currentSet[currentQ];
     const letters = ['A','B','C','D'];
     const correct = q.correct;
@@ -3877,8 +4224,8 @@
         <div class="score-num">${correctAnswerCount} / ${total}</div>
         <div class="score-sub">questions answered correctly</div>
         <div class="score-actions">
-          <button class="score-btn primary" onclick="${fromSection === 8 ? 'startMixedReview()' : 'startQuestions(' + fromSection + ')'}">Try Again</button>
-          ${fromSection === 8 ? '' : `<button class="score-btn secondary" onclick="showExplanation(${fromSection})">Back to Explanation</button>`}
+          <button class="score-btn primary" onclick="${fromSection === 9 ? 'startMixedReview()' : 'startQuestions(' + fromSection + ')'}">Try Again</button>
+          ${fromSection === 9 ? '' : `<button class="score-btn secondary" onclick="showExplanation(${fromSection})">Back to Explanation</button>`}
           <button class="score-btn secondary" onclick="showLanding()">All Rules</button>
         </div>
       </div>`;
